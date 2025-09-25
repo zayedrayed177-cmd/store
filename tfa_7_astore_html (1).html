@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tfa7a Store - Template</title>
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#111214;
+      --muted:#9aa0a6;
+      --accent:#2bff00;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      font-family: Inter, system-ui, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#050506);color:#e7e9ea;min-height:100vh;user-select:none;}
+    a{color:inherit;text-decoration:none}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(4px)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:48px;height:48px;object-fit:cover;border-radius:8px;pointer-events:none}
+    h1{margin:0;font-size:18px}
+    nav{display:flex;align-items:center;gap:12px}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;border:none}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px}
+    main{padding:28px}
+    .hero{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+    .hero .left{flex:1;min-width:240px}
+    .hero .right{flex:1;min-width:280px}
+    .banner{background:linear-gradient(180deg,rgba(185,28,28,0.12),transparent);padding:22px;border-radius:14px}
+    .banner h2{margin:0 0 8px 0}
+    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:22px}
+    .card{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);position:relative;overflow:hidden}
+    .card img{width:100%;height:150px;object-fit:cover;border-radius:8px;pointer-events:none;user-drag:none;}
+    .card h3{margin:10px 0 6px 0;font-size:16px}
+    .desc{color:var(--muted);font-size:13px;white-space:pre-line}
+    footer{padding:20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:30px}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);padding:20px;z-index:20}
+    .panel{background:var(--card);padding:18px;border-radius:12px;max-width:700px;width:100%}
+    label{display:block;margin-top:8px;font-size:13px;color:var(--muted)}
+    input[type=text],input[type=url],input[type=password],textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    textarea{min-height:80px}
+    .row{display:flex;gap:8px}.row .col{flex:1}
+    @media (max-width:720px){header{padding:12px} .hero{flex-direction:column}.brand h1{font-size:16px}}
+  </style>
+</head>
+<body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+  <header>
+    <div class="brand">
+      <img src="https://cdn.discordapp.com/attachments/1256705915487260743/1420677606805737514/logo_store.png" alt="logo">
+      <div>
+        <h1>Tfa7a Store</h1>
+        <div style="color:var(--muted);font-size:13px">متجرك للمنتجات — Dark theme</div>
+      </div>
+    </div>
+    <nav>
+      <a class="ghost" href="#products">المنتجات</a>
+      <a class="ghost" href="#about">عن المتجر</a>
+      <button class="btn" id="loginBtn">لوحة التحكم</button>
+      <a class="btn" href="https://discord.gg/YezDh9ZxB8" target="_blank">انضم لديسكورد</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="left banner">
+        <h2>مرحباً بك في Tfa7a Store</h2>
+        <p class="desc">أفضل المنتجات. اشترِ الآن مباشر مع PayPal أو STCPay/UrPay يدوي.</p>
+      </div>
+    </section>
+    <section id="products">
+      <h2 style="margin-top:26px">المنتجات</h2>
+      <div class="products" id="productsGrid"></div>
+    </section>
+    <section id="about" style="margin-top:26px">
+      <h2>عن المتجر</h2>
+      <p class="desc">Tfa7a Store قالب لمتجر صغير مع دعم الدفع عبر PayPal.Me وSTCPay/UrPay.</p>
+    </section>
+  </main>
+  <footer>
+    © <span id="year"></span> Tfa7a Store — كل الحقوق محفوظة
+  </footer>
+
+  <!-- لوحة التحكم -->
+  <div class="modal" id="loginModal">
+    <div class="panel">
+      <h3>تسجيل الدخول</h3>
+      <label>الإيميل</label>
+      <input id="loginEmail" type="text" placeholder="email">
+      <label>كلمة المرور</label>
+      <input id="loginPass" type="password" placeholder="password">
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="ghost" id="closeLogin">إلغاء</button>
+        <button class="btn" id="doLogin">دخول</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="adminModal">
+    <div class="panel">
+      <h3>إضافة منتج</h3>
+      <label>اسم المنتج</label>
+      <input id="pTitle" type="text">
+      <label>السعر</label>
+      <input id="pPrice" type="text">
+      <label>رابط الصورة</label>
+      <input id="pImage" type="url">
+      <label>الوصف</label>
+      <textarea id="pDesc"></textarea>
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+        <button class="ghost" id="closeAdmin">إلغاء</button>
+        <button class="btn" id="saveProduct">حفظ</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const loginEmail='tfa7astore@store.com';
+    const loginPass='tfa7astore';
+
+    const loginBtn=document.getElementById('loginBtn');
+    const loginModal=document.getElementById('loginModal');
+    const adminModal=document.getElementById('adminModal');
+    const closeLogin=document.getElementById('closeLogin');
+    const closeAdmin=document.getElementById('closeAdmin');
+    const doLogin=document.getElementById('doLogin');
+
+    loginBtn.onclick=()=>loginModal.style.display='flex';
+    closeLogin.onclick=()=>loginModal.style.display='none';
+    closeAdmin.onclick=()=>adminModal.style.display='none';
+
+    doLogin.onclick=()=>{
+      const email=document.getElementById('loginEmail').value;
+      const pass=document.getElementById('loginPass').value;
+      if(email===loginEmail && pass===loginPass){
+        loginModal.style.display='none';
+        adminModal.style.display='flex';
+      }else{alert('بيانات خاطئة');}
+    };
+
+    const products=[
+      {title:'ぃ𝗲𝘅𝗲𝗰𝘂𝘁𝗶𝗼𝗻', desc:`يتم توفير المنتج مع خدمة تركيب مجانيه\nالمنتج مايجي معه لاكرسي ولا ماب فقط سكربت وتحتاج تربطه وتركيبه معقد\nمع نسختنا معدله ومضاف عليه ماب اخر وخاص يدعم السكربت ومع كرسي خاص\nيدعم العربيه والانقليزيه موفرين النسختي`, price:15},
+      {title:'ぃ𝗧𝗼𝗿𝘁𝘂𝗿𝗲', desc:`ايتم بشنطه ينضاف وين ماتبغى\nشكل وواجه نطورها لك نفس ثيم 🟠 او تبغاه بشكل براسك تتميز فيه\nالاسكربت قابل لتعديل والاضافه باشت الانواع ومن قسم`, price:15},
+      {title:'𝗺𝗲𝗱𝗸𝗶𝘁', desc:`سكربت حصري مع مني قيم حصري\nفي حال اسقط يقعد تحت الوعي لين بعدها يتفنش\nوفالاثناء هاذي يتاح للاعبين الاخرين انعاشه عبر المدكت او البانجد\nعبر الكونفق تحدد الايتم`, price:15},
+      {title:'ぃ𝘁𝗿𝗮𝗰𝗸', desc:`سكربت الكلبشة الذكية – Tfa7a Scripts\nالسكربت يقدم لك أيتم كلبشة للرجل يمكن استخدامها على أي لاعب، وبعدها تتحكم فيه من خلال جهاز خاص.\nالمميزات:\nتركيب الكلبشة على أي لاعب بسهولة.\nإمكانية صعق اللاعب عن بُعد في أي وقت.\nمتابعة وتعقب اللاعب باستخدام الجهاز.\nفك الكلبشة متى ما تريد بضغطة زر.`, price:15},
+      {title:'ぃ𝘀𝘆𝗿𝗶𝗻𝗴𝗲', desc:`He must take off his shirt\nDose re-testing lab\nThe map is comprehensive\nDizziness and poisoning for 5 minutes\nVideo coming soon\nPre-order`, price:9}
+    ];
+
+    const grid=document.getElementById('productsGrid');
+    function renderProducts(){
+      grid.innerHTML='';
+      products.forEach(p=>{
+        const div=document.createElement('div');
+        div.className='card';
+        div.innerHTML=`<h3>${p.title}</h3><div class=desc>${p.desc}</div><a class="btn" href="https://paypal.me/STNG114/${p.price}" target="_blank">اشترِ الآن $${p.price}</a>`;
+        grid.appendChild(div);
+      });
+    }
+
+    renderProducts();
+
+    document.getElementById('saveProduct').onclick=()=>{
+      const title=document.getElementById('pTitle').value;
+      const price=parseFloat(document.getElementById('pPrice').value);
+      const desc=document.getElementById('pDesc').value;
+      if(title && !isNaN(price) && desc){
+        products.push({title,price,desc});
+        renderProducts();
+        document.getElementById('pTitle').value='';
+        document.getElementById('pPrice').value='';
+        document.getElementById('pDesc').value='';
+        document.getElementById('pImage').value='';
+        alert('تم إضافة المنتج');
+      }else alert('املأ جميع الحقول');
+    };
+
+    document.getElementById('year').innerText=new Date().getFullYear();
+  </script>
+</body>
+</html>
