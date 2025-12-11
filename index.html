@@ -1,179 +1,387 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tfa7a Store - Template</title>
-  <style>
-    :root{
-      --bg:#0b0b0d;
-      --card:#111214;
-      --muted:#9aa0a6;
-      --accent:#2bff00;
-      --glass: rgba(255,255,255,0.03);
-      --radius:12px;
-      font-family: Inter, system-ui, Arial, sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#050506);color:#e7e9ea;min-height:100vh;user-select:none;}
-    a{color:inherit;text-decoration:none}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(4px)}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:48px;height:48px;object-fit:cover;border-radius:8px;pointer-events:none}
-    h1{margin:0;font-size:18px}
-    nav{display:flex;align-items:center;gap:12px}
-    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;border:none}
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px}
-    main{padding:28px}
-    .hero{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
-    .hero .left{flex:1;min-width:240px}
-    .hero .right{flex:1;min-width:280px}
-    .banner{background:linear-gradient(180deg,rgba(185,28,28,0.12),transparent);padding:22px;border-radius:14px}
-    .banner h2{margin:0 0 8px 0}
-    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:22px}
-    .card{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);position:relative;overflow:hidden}
-    .card img{width:100%;height:150px;object-fit:cover;border-radius:8px;pointer-events:none;user-drag:none;}
-    .card h3{margin:10px 0 6px 0;font-size:16px}
-    .desc{color:var(--muted);font-size:13px;white-space:pre-line}
-    footer{padding:20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:30px}
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);padding:20px;z-index:20}
-    .panel{background:var(--card);padding:18px;border-radius:12px;max-width:700px;width:100%}
-    label{display:block;margin-top:8px;font-size:13px;color:var(--muted)}
-    input[type=text],input[type=url],input[type=password],textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-    textarea{min-height:80px}
-    .row{display:flex;gap:8px}.row .col{flex:1}
-    @media (max-width:720px){header{padding:12px} .hero{flex-direction:column}.brand h1{font-size:16px}}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Tfa7a Store — الكامل</title>
+<link rel="icon" href="https://cdn.discordapp.com/attachments/1256705915487260743/1420677606805737514/logo_store.png">
+<style>
+:root{--bg:#0b0b0d;--card:#0f1113;--muted:#9aa0a6;--accent:#b91c1c;--glass:rgba(255,255,255,0.03);--radius:12px;font-family:Inter,system-ui,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#050506);color:#e9ecef}
+a{color:inherit}
+header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(255,255,255,0.02);backdrop-filter:blur(4px)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:56px;height:56px;border-radius:10px;pointer-events:none}
+.brand h1{margin:0;font-size:18px}
+.nav{display:flex;gap:8px;align-items:center}
+.btn{background:var(--accent);color:#fff;padding:9px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;color:var(--muted)}
+.container{padding:22px;max-width:1100px;margin:0 auto}
+.hero{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.banner{background:linear-gradient(180deg,rgba(185,28,28,0.08),transparent);padding:18px;border-radius:12px}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:18px}
+.card{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);position:relative;overflow:hidden}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:8px;pointer-events:none;user-drag:none}
+.card h3{margin:10px 0 6px 0}
+.desc{color:var(--muted);font-size:13px;white-space:pre-line}
+.price{font-weight:700;color:var(--accent);margin-top:8px}
+.footer{padding:20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:30px}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);padding:20px;z-index:60}
+.panel{background:var(--card);padding:18px;border-radius:12px;max-width:920px;width:100%}
+input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+.row{display:flex;gap:8px}.col{flex:1}
+.small{font-size:13px;color:var(--muted)}
+/* responsive */
+@media (max-width:720px){header{padding:10px}.products{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+</style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
-  <header>
-    <div class="brand">
-      <img src="https://cdn.discordapp.com/attachments/1256705915487260743/1420677606805737514/logo_store.png" alt="logo">
-      <div>
-        <h1>Tfa7a Store</h1>
-        <div style="color:var(--muted);font-size:13px">متجرك للمنتجات — Dark theme</div>
-      </div>
+
+<header>
+  <div class="brand">
+    <img src="https://cdn.discordapp.com/attachments/1256705915487260743/1420677606805737514/logo_store.png" alt="logo">
+    <div>
+      <h1>Tfa7a Store</h1>
+      <div class="small">متجرك — Dark theme</div>
     </div>
-    <nav>
-      <a class="ghost" href="#products">المنتجات</a>
-      <a class="ghost" href="#about">عن المتجر</a>
-      <button class="btn" id="loginBtn">لوحة التحكم</button>
-      <a class="btn" href="https://discord.gg/YezDh9ZxB8" target="_blank">انضم لديسكورد</a>
-    </nav>
-  </header>
-  <main>
+  </div>
+  <nav class="nav">
+    <button class="ghost" onclick="route('#/')">الرئيسية</button>
+    <button class="ghost" onclick="route('#/products')">المنتجات</button>
+    <button class="ghost" onclick="route('#/reviews')">التقييمات</button>
+    <button class="ghost" onclick="route('#/orders')">الطلبات</button>
+    <button class="btn" id="loginBtn">لوحة التحكم</button>
+    <a class="btn" href="https://discord.gg/YezDh9ZxB8" target="_blank">ديسكورد</a>
+  </nav>
+</header>
+
+<main class="container" id="app"></main>
+
+<div class="footer">© <span id="year"></span> Tfa7a Store — كل الحقوق محفوظة</div>
+
+<!-- Modals -->
+<div class="modal" id="loginModal"><div class="panel"><h3>تسجيل الدخول</h3><label>الإيميل</label><input id="loginEmail" placeholder="email"><label>كلمة المرور</label><input id="loginPass" type="password"><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="ghost" id="closeLogin">إلغاء</button><button class="btn" id="doLogin">دخول</button></div></div></div>
+
+<div class="modal" id="adminModal"><div class="panel" id="adminPanel"><h3>لوحة تحكم - إدارة المتجر</h3>
+  <div style="display:flex;gap:8px;margin-bottom:12px"><button class="btn" id="manageProductsBtn">المنتجات</button><button class="btn" id="manageOrdersBtn">الطلبات</button><button class="btn" id="manageReviewsBtn">التقييمات</button><button class="ghost" id="closeAdmin">إغلاق</button></div>
+  <div id="adminContent"></div>
+</div></div>
+
+<div class="modal" id="buyModal"><div class="panel"><h3 id="buyTitle">شراء</h3>
+  <div id="buyDesc" class="desc small"></div>
+  <div style="display:flex;gap:8px;margin-top:10px"><div class="col"><label>الاسم</label><input id="custName"></div><div class="col"><label>الايميل</label><input id="custEmail"></div></div>
+  <div style="display:flex;gap:8px;margin-top:8px"><div class="col"><label>رقم الجوال</label><input id="custPhone" placeholder="+9665..."></div><div class="col"><label>ملاحظة (اختياري)</label><input id="custNote"></div></div>
+  <div style="margin-top:12px"><label>اختر طريقة الدفع</label><select id="payMethod"><option value="paypal">PayPal</option><option value="stc">STCPay (يدوي)</option><option value="ur">UrPay (يدوي)</option></select></div>
+  <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end"><button class="ghost" id="cancelBuy">إلغاء</button><button class="btn" id="confirmBuy">تأكيد & دفع</button></div>
+</div></div>
+
+<div class="modal" id="qrModal"><div class="panel"><h3>تحويل يدوي</h3><div id="qrWrap"></div><div class="small" id="qrInfo" style="margin-top:8px"></div><div style="margin-top:12px;text-align:right"><button class="btn" id="closeQr">تم</button></div></div></div>
+
+<!-- QR lib -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<script>
+// -------------- CONFIG --------------
+const STORE_EMAIL = 'tfa7astore@store.com';
+const STORE_PASS = 'tfa7astore';
+const PAYPAL_EMAIL = 'xxz05549@gmail.com'; // where money goes
+const EXCHANGE_RATE = 3.75; // 1 USD = 3.75 SAR (fixed)
+const STC_PHONE = '+966508722561';
+const UR_PHONE = '+966508722561';
+
+// -------------- DATA (initial) --------------
+let products = [
+  {id:1,slug:'execution',title:'ぃ𝗲𝘅𝗲𝗰𝘂𝘁𝗶𝗼𝗻',price:15,desc:`يتم توفير المنتج مع خدمة تركيب مجانيه
+المنتج مايجي معه لاكرسي ولا ماب فقط سكربت وتحتاج تربطه وتركيبه معقد
+مع نسختنا معدله ومضاف عليه ماب اخر وخاص يدعم السكربت ومع كرسي خاص
+يدعم العربيه والانقليزيه موفرين النسختي`,video:'https://www.youtube.com/watch?v=2QiT5jyAaJE'},
+  {id:2,slug:'torture',title:'ぃ𝗧𝗼𝗿𝘁𝘂𝗿𝗲',price:15,desc:`ايتم بشنطه ينضاف وين ماتبغى
+شكل وواجه نطورها لك نفس ثيم 🟠 او تبغاه بشكل براسك تتميز فيه
+الاسكربت قابل لتعديل والاضافه باشت الانواع ومن قسم`,video:'https://www.youtube.com/watch?v=jNN1dMnDe28&start=21'},
+  {id:3,slug:'medkit',title:'𝗺𝗲𝗱𝗸𝗶𝘁',price:15,desc:`سكربت حصري مع مني قيم حصري
+في حال اسقط يقعد تحت الوعي لين بعدها يتفنش
+وفالاثناء هاذي يتاح للاعبين الاخرين انعاشه عبر المدكت او البانجد
+عبر الكونفق تحدد الايتم`},
+  {id:4,slug:'itrack',title:'ぃ𝘁𝗿𝗮𝗰𝗸',price:15,desc:`سكربت الكلبشة الذكية – Tfa7a Scripts
+السكربت يقدم لك أيتم كلبشة للرجل يمكن استخدامها على أي لاعب، وبعدها تتحكم فيه من خلال جهاز خاص.
+المميزات:
+تركيب الكلبشة على أي لاعب بسهولة.
+إمكانية صعق اللاعب عن بُعد في أي وقت.
+متابعة وتعقب اللاعب باستخدام الجهاز.
+فك الكلبشة متى ما تريد بضغطة زر.`},
+  {id:5,slug:'syringe',title:'ぃ𝘀𝘆𝗿𝗶𝗻𝗴𝗲',price:9,desc:`He must take off his shirt
+Dose re-testing lab
+The map is comprehensive
+Dizziness and poisoning for 5 minutes
+Video coming soon
+Pre-order`},
+  // Weed Lap (new) 
+  {id:6,slug:'weedlap',title:'Weed Lap',price:10,desc:`عرض المنتج على اليوتيوب. تركيب بسيط، نسخة جاهزة للشراء.`,video:'https://youtu.be/-YZdDqFHVwE?si=6UZ1hB7GkKV1RRJT'}
+];
+
+let reviews = JSON.parse(localStorage.getItem('tfa_reviews')||'[]');
+let orders = JSON.parse(localStorage.getItem('tfa_orders')||'[]');
+
+// -------------- ROUTER --------------
+const app = document.getElementById('app');
+function route(hash){location.hash = hash; render();}
+function render(){
+  const h = location.hash || '#/';
+  if(h.startsWith('#/reviews')) return renderReviews();
+  if(h.startsWith('#/orders')) return renderOrders();
+  return renderProducts();
+}
+
+// -------------- VIEWS --------------
+function renderProducts(){
+  app.innerHTML = `
     <section class="hero">
-      <div class="left banner">
+      <div class="banner">
         <h2>مرحباً بك في Tfa7a Store</h2>
-        <p class="desc">أفضل المنتجات. اشترِ الآن مباشر مع PayPal أو STCPay/UrPay يدوي.</p>
+        <p class="small">اشترِ الآن مباشرة — PayPal أو تحويل يدوي (المبلغ سيظهر بالريال عند الدفع)</p>
       </div>
     </section>
-    <section id="products">
-      <h2 style="margin-top:26px">المنتجات</h2>
+    <section id="productsList">
+      <h2 style="margin-top:18px">المنتجات</h2>
       <div class="products" id="productsGrid"></div>
     </section>
-    <section id="about" style="margin-top:26px">
-      <h2>عن المتجر</h2>
-      <p class="desc">Tfa7a Store قالب لمتجر صغير مع دعم الدفع عبر PayPal.Me وSTCPay/UrPay.</p>
-    </section>
-  </main>
-  <footer>
-    © <span id="year"></span> Tfa7a Store — كل الحقوق محفوظة
-  </footer>
-
-  <!-- لوحة التحكم -->
-  <div class="modal" id="loginModal">
-    <div class="panel">
-      <h3>تسجيل الدخول</h3>
-      <label>الإيميل</label>
-      <input id="loginEmail" type="text" placeholder="email">
-      <label>كلمة المرور</label>
-      <input id="loginPass" type="password" placeholder="password">
-      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
-        <button class="ghost" id="closeLogin">إلغاء</button>
-        <button class="btn" id="doLogin">دخول</button>
+  `;
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = '';
+  products.forEach(p=>{
+    const div = document.createElement('div'); div.className='card';
+    const thumb = p.video ? `https://img.youtube.com/vi/${extractYouTubeID(p.video)}/maxresdefault.jpg` : '';
+    div.innerHTML = `
+      ${thumb?`<img src="${thumb}" alt="${p.title}">`:''}
+      <h3>${p.title}</h3>
+      <div class="desc">${p.desc}</div>
+      <div class="price">$${p.price}</div>
+      <div style="margin-top:10px;display:flex;gap:8px">
+        <button class="btn" onclick="openBuy(${p.id})">اشترِ الآن</button>
+        ${p.video?`<a class="ghost" href="${p.video}" target="_blank">شاهد</a>`:''}
+        <button class="ghost" onclick="openDetail(${p.id})">تفاصيل</button>
       </div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+function renderReviews(){
+  app.innerHTML = `<h2>التقييمات</h2><div id="reviewsList"></div>
+    <h3 style="margin-top:18px">أضف تقييم</h3>
+    <label>الاسم</label><input id="rName" placeholder="اسمك">
+    <label>التقييم</label><select id="rRate"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+    <label>التعليق</label><textarea id="rText"></textarea>
+    <div style="margin-top:10px;text-align:right"><button class="btn" id="addReviewBtn">إرسال</button></div>`;
+  document.getElementById('addReviewBtn').onclick = addReview;
+  renderReviewsList();
+}
+function renderReviewsList(){
+  const box = document.getElementById('reviewsList'); box.innerHTML = '';
+  reviews.slice().reverse().forEach(r=>{
+    const d = document.createElement('div'); d.className='card';
+    d.innerHTML = `<b>${r.name}</b> — <span class="small">${r.date}</span><div class="small">تقييم: ${'★'.repeat(r.rate)}</div><div class="desc">${r.text}</div>`;
+    box.appendChild(d);
+  });
+}
+
+function renderOrders(){
+  app.innerHTML = `<h2>الطلبات (محليًا)</h2><div id="ordersList"></div>
+    <div style="margin-top:12px"><button class="btn" id="exportOrdersBtn">تصدير الطلبات (JSON)</button> <button class="btn" id="exportReviewsBtn">تصدير التقييمات (JSON)</button></div>`;
+  const box = document.getElementById('ordersList'); box.innerHTML = '';
+  orders.slice().reverse().forEach(o=>{
+    const d = document.createElement('div'); d.className='card';
+    d.innerHTML = `<b>#${o.id}</b> — ${o.product} — <div class="small">المبلغ: $${o.amount} (${convertToSAR(o.amount)} SAR)</div>
+      <div class="small">الاسم: ${o.name} — الايميل: ${o.email} — الهاتف: ${o.phone}</div>
+      <div class="desc">ملاحظة: ${o.note||'-'}</div><div class="small">طريقة الدفع: ${o.method}</div>`;
+    box.appendChild(d);
+  });
+  document.getElementById('exportOrdersBtn').onclick = exportOrders;
+  document.getElementById('exportReviewsBtn').onclick = exportReviews;
+}
+
+// -------------- PRODUCT DETAIL --------------
+function openDetail(id){
+  const p = products.find(x=>x.id==id); if(!p) return;
+  app.innerHTML = `<button class="ghost" onclick="route('#/products')">عودة</button><h2>${p.title}</h2><div class="desc">${p.desc}</div>
+    <div style="margin-top:12px"><div class="price">$${p.price}</div><button class="btn" onclick="openBuy(${p.id})">اشترِ الآن</button> ${p.video?`<a class="ghost" href="${p.video}" target="_blank">شاهد</a>`:''}</div>`;
+}
+
+// -------------- BUY FLOW --------------
+const buyModal = document.getElementById('buyModal');
+const qrModal = document.getElementById('qrModal');
+
+function openBuy(id){
+  const p = products.find(x=>x.id==id); if(!p) return;
+  document.getElementById('buyTitle').innerText = p.title;
+  document.getElementById('buyDesc').innerText = p.desc;
+  document.getElementById('confirmBuy').dataset.pid = id;
+  document.getElementById('confirmBuy').dataset.price = p.price;
+  buyModal.style.display = 'flex';
+}
+document.getElementById('cancelBuy').onclick = ()=> buyModal.style.display='none';
+document.getElementById('closeQr').onclick = ()=> qrModal.style.display='none';
+
+document.getElementById('confirmBuy').onclick = function(){
+  const id = this.dataset.pid; const price = parseFloat(this.dataset.price);
+  const name = document.getElementById('custName').value || 'زائر';
+  const email = document.getElementById('custEmail').value || '';
+  const phone = document.getElementById('custPhone').value || '';
+  const note = document.getElementById('custNote').value || '';
+  const method = document.getElementById('payMethod').value;
+  const order = {id: Date.now(), product: products.find(p=>p.id==id).title, amount: price, name, email, phone, note, method, date: new Date().toLocaleString()};
+  orders.push(order); localStorage.setItem('tfa_orders', JSON.stringify(orders));
+  buyModal.style.display = 'none';
+  if(method === 'paypal'){
+    // convert amount to SAR and open PayPal with SAR currency
+    const sar = convertToSAR(price);
+    const url = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${encodeURIComponent(sar)}&currency_code=SAR&item_name=${encodeURIComponent(order.product)}`;
+    window.open(url, '_blank');
+    alert('تم حفظ الطلب محلياً. سيتم فتح PayPal للدفع بالمبلغ المحول (SAR).');
+  } else {
+    // Show QR for STC/UrPay
+    qrModal.style.display = 'flex';
+    const wrap = document.getElementById('qrWrap'); wrap.innerHTML = '';
+    const canvas = document.createElement('canvas'); wrap.appendChild(canvas);
+    const phone = method === 'stc' ? STC_PHONE : UR_PHONE;
+    const sar = convertToSAR(price);
+    const qrText = `${method==='stc'?'STCPay':'UrPay'}:${phone};amount:${sar} SAR`;
+    new QRious({element:canvas, value:qrText, size:220});
+    document.getElementById('qrInfo').innerText = `الرجاء تحويل ${sar} ريال سعودي إلى ${phone} ثم أرسل إيصال الدفع في ديسكورد أو واتساب.`;
+  }
+};
+
+// -------------- Admin (login & manage) --------------
+const loginModal = document.getElementById('loginModal');
+const adminModal = document.getElementById('adminModal');
+
+document.getElementById('loginBtn').onclick = ()=> loginModal.style.display='flex';
+document.getElementById('closeLogin').onclick = ()=> loginModal.style.display='none';
+document.getElementById('doLogin').onclick = ()=>{
+  const e = document.getElementById('loginEmail').value;
+  const p = document.getElementById('loginPass').value;
+  if(e===STORE_EMAIL && p===STORE_PASS){ loginModal.style.display='none'; openAdmin(); } else alert('بيانات الدخول غير صحيحة');
+};
+
+function openAdmin(){
+  adminModal.style.display='flex';
+  renderAdminProducts();
+}
+document.getElementById('closeAdmin').onclick = ()=> adminModal.style.display='none';
+
+const adminContent = document.getElementById('adminContent');
+document.getElementById('manageProductsBtn').onclick = renderAdminProducts;
+document.getElementById('manageOrdersBtn').onclick = renderAdminOrders;
+document.getElementById('manageReviewsBtn').onclick = renderAdminReviews;
+
+function renderAdminProducts(){
+  adminContent.innerHTML = `<h4>إدارة المنتجات</h4>
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <div class="col"><label>اسم المنتج</label><input id="aTitle"></div>
+      <div class="col"><label>السعر (USD)</label><input id="aPrice" type="number"></div>
     </div>
-  </div>
-  <div class="modal" id="adminModal">
-    <div class="panel">
-      <h3>إضافة منتج</h3>
-      <label>اسم المنتج</label>
-      <input id="pTitle" type="text">
-      <label>السعر</label>
-      <input id="pPrice" type="text">
-      <label>رابط الصورة</label>
-      <input id="pImage" type="url">
-      <label>الوصف</label>
-      <textarea id="pDesc"></textarea>
-      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
-        <button class="ghost" id="closeAdmin">إلغاء</button>
-        <button class="btn" id="saveProduct">حفظ</button>
-      </div>
-    </div>
-  </div>
+    <label>الوصف</label><textarea id="aDesc"></textarea>
+    <label>رابط الفيديو/صورة (اختياري)</label><input id="aMedia">
+    <div style="text-align:right;margin-top:10px"><button class="btn" id="addProdBtn">إضافة</button></div>
+    <hr><div id="prodList"></div>`;
+  document.getElementById('addProdBtn').onclick = addProduct;
+  renderAdminProdList();
+}
+function renderAdminProdList(){
+  const box = document.getElementById('prodList'); box.innerHTML='';
+  products.forEach((p,i)=>{
+    const d = document.createElement('div'); d.className='card';
+    d.innerHTML = `<b>${p.title}</b> — $${p.price}<div class="small" style="margin-top:8px">${(p.desc||'').substring(0,120)}...</div>
+      <div style="margin-top:8px;text-align:right"><button class="ghost" onclick="editProd(${i})">تعديل</button><button class="ghost" onclick="delProd(${i})">حذف</button></div>`;
+    box.appendChild(d);
+  });
+}
+function addProduct(){
+  const t = document.getElementById('aTitle').value;
+  const pr = parseFloat(document.getElementById('aPrice').value);
+  const d = document.getElementById('aDesc').value;
+  const m = document.getElementById('aMedia').value;
+  if(!t || isNaN(pr)){ alert('عبي الاسم والسعر'); return; }
+  products.push({id:Date.now(), title:t, price:pr, desc:d, video:m});
+  renderAdminProdList(); renderProducts();
+  alert('تم إضافة المنتج');
+}
+function editProd(i){
+  const p = products[i];
+  const t = prompt('الاسم', p.title); if(t!==null) products[i].title = t;
+  const pr = prompt('السعر', p.price); if(pr!==null) products[i].price = parseFloat(pr);
+  const d = prompt('الوصف', p.desc); if(d!==null) products[i].desc = d;
+  renderAdminProdList(); renderProducts();
+}
+function delProd(i){ if(confirm('تأكيد حذف المنتج؟')){ products.splice(i,1); renderAdminProdList(); renderProducts(); } }
 
-  <script>
-    const loginEmail='tfa7astore@store.com';
-    const loginPass='tfa7astore';
+function renderAdminOrders(){
+  adminContent.innerHTML = '<h4>الطلبات</h4><div id="adminOrders"></div><div style="margin-top:10px;text-align:right"><button class="btn" id="exportOrdersAdmin">تصدير الطلبات</button></div>';
+  const box = document.getElementById('adminOrders'); box.innerHTML = '';
+  orders.slice().reverse().forEach(o=>{
+    const d = document.createElement('div'); d.className='card';
+    d.innerHTML = `<b>#${o.id}</b> — ${o.product} — $${o.amount} (${convertToSAR(o.amount)} SAR)
+      <div class="small">الاسم: ${o.name} — ${o.phone} — ${o.email}</div>
+      <div class="desc">ملاحظة: ${o.note||'-'}</div>
+      <div style="margin-top:8px;text-align:right"><button class="ghost" onclick="markPaid(${o.id})">تم الدفع</button></div>`;
+    box.appendChild(d);
+  });
+  document.getElementById('exportOrdersAdmin').onclick = exportOrders;
+}
+function markPaid(id){
+  const idx = orders.findIndex(o=>o.id==id); if(idx>-1){ orders[idx].status='paid'; localStorage.setItem('tfa_orders', JSON.stringify(orders)); alert('وُضِع: مدفوع'); renderAdminOrders(); }
+}
+function renderAdminReviews(){
+  adminContent.innerHTML = '<h4>التقييمات</h4><div id="admRev"></div><div style="margin-top:10px;text-align:right"><button class="btn" id="exportReviewsAdmin">تصدير التقييمات</button></div>';
+  const box = document.getElementById('admRev'); box.innerHTML='';
+  reviews.slice().reverse().forEach(r=>{
+    const d = document.createElement('div'); d.className='card';
+    d.innerHTML = `<b>${r.name}</b> — ${r.date}<div class="small">تقييم: ${'★'.repeat(r.rate)}</div><div class="desc">${r.text}</div>`;
+    box.appendChild(d);
+  });
+  document.getElementById('exportReviewsAdmin').onclick = exportReviews;
+}
 
-    const loginBtn=document.getElementById('loginBtn');
-    const loginModal=document.getElementById('loginModal');
-    const adminModal=document.getElementById('adminModal');
-    const closeLogin=document.getElementById('closeLogin');
-    const closeAdmin=document.getElementById('closeAdmin');
-    const doLogin=document.getElementById('doLogin');
+// -------------- HELPERS --------------
+function convertToSAR(usd){ const n = parseFloat(usd); if(isNaN(n)) return '0.00'; return (n * EXCHANGE_RATE).toFixed(2); }
+function extractYouTubeID(url){
+  try{
+    const u = new URL(url);
+    if(u.hostname.includes('youtu.be')) return u.pathname.slice(1);
+    if(u.searchParams.get('v')) return u.searchParams.get('v');
+    // fallback start param parsing
+    const sp = url.split('/').pop(); return sp;
+  }catch(e){ return '';}
+}
 
-    loginBtn.onclick=()=>loginModal.style.display='flex';
-    closeLogin.onclick=()=>loginModal.style.display='none';
-    closeAdmin.onclick=()=>adminModal.style.display='none';
+// export functions
+function downloadFile(filename,content){
+  const blob = new Blob([content], {type:'application/json'}); const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+function exportOrders(){ downloadFile('tfa_orders.json', JSON.stringify(orders,null,2)); }
+function exportReviews(){ downloadFile('tfa_reviews.json', JSON.stringify(reviews,null,2)); }
 
-    doLogin.onclick=()=>{
-      const email=document.getElementById('loginEmail').value;
-      const pass=document.getElementById('loginPass').value;
-      if(email===loginEmail && pass===loginPass){
-        loginModal.style.display='none';
-        adminModal.style.display='flex';
-      }else{alert('بيانات خاطئة');}
-    };
+// add review
+function addReview(){
+  const name = document.getElementById('rName').value || 'زائر';
+  const rate = parseInt(document.getElementById('rRate').value || '5');
+  const text = document.getElementById('rText').value || '';
+  reviews.push({id:Date.now(), name, rate, text, date: new Date().toLocaleString()});
+  localStorage.setItem('tfa_reviews', JSON.stringify(reviews));
+  alert('تم إضافة تقييم'); renderReviews();
+}
 
-    const products=[
-      {title:'ぃ𝗲𝘅𝗲𝗰𝘂𝘁𝗶𝗼𝗻', desc:`يتم توفير المنتج مع خدمة تركيب مجانيه\nالمنتج مايجي معه لاكرسي ولا ماب فقط سكربت وتحتاج تربطه وتركيبه معقد\nمع نسختنا معدله ومضاف عليه ماب اخر وخاص يدعم السكربت ومع كرسي خاص\nيدعم العربيه والانقليزيه موفرين النسختي`, price:15},
-      {title:'ぃ𝗧𝗼𝗿𝘁𝘂𝗿𝗲', desc:`ايتم بشنطه ينضاف وين ماتبغى\nشكل وواجه نطورها لك نفس ثيم 🟠 او تبغاه بشكل براسك تتميز فيه\nالاسكربت قابل لتعديل والاضافه باشت الانواع ومن قسم`, price:15},
-      {title:'𝗺𝗲𝗱𝗸𝗶𝘁', desc:`سكربت حصري مع مني قيم حصري\nفي حال اسقط يقعد تحت الوعي لين بعدها يتفنش\nوفالاثناء هاذي يتاح للاعبين الاخرين انعاشه عبر المدكت او البانجد\nعبر الكونفق تحدد الايتم`, price:15},
-      {title:'ぃ𝘁𝗿𝗮𝗰𝗸', desc:`سكربت الكلبشة الذكية – Tfa7a Scripts\nالسكربت يقدم لك أيتم كلبشة للرجل يمكن استخدامها على أي لاعب، وبعدها تتحكم فيه من خلال جهاز خاص.\nالمميزات:\nتركيب الكلبشة على أي لاعب بسهولة.\nإمكانية صعق اللاعب عن بُعد في أي وقت.\nمتابعة وتعقب اللاعب باستخدام الجهاز.\nفك الكلبشة متى ما تريد بضغطة زر.`, price:15},
-      {title:'ぃ𝘀𝘆𝗿𝗶𝗻𝗴𝗲', desc:`He must take off his shirt\nDose re-testing lab\nThe map is comprehensive\nDizziness and poisoning for 5 minutes\nVideo coming soon\nPre-order`, price:9}
-    ];
+// mark initial route & UI hookups
+document.getElementById('year').innerText = new Date().getFullYear();
+if(!location.hash) location.hash = '#/';
+render();
 
-    const grid=document.getElementById('productsGrid');
-    function renderProducts(){
-      grid.innerHTML='';
-      products.forEach(p=>{
-        const div=document.createElement('div');
-        div.className='card';
-        div.innerHTML=`<h3>${p.title}</h3><div class=desc>${p.desc}</div><a class="btn" href="https://paypal.me/STNG114/${p.price}" target="_blank">اشترِ الآن $${p.price}</a>`;
-        grid.appendChild(div);
-      });
-    }
+// close admin/login buttons
+// (already bound above)
+</script>
 
-    renderProducts();
-
-    document.getElementById('saveProduct').onclick=()=>{
-      const title=document.getElementById('pTitle').value;
-      const price=parseFloat(document.getElementById('pPrice').value);
-      const desc=document.getElementById('pDesc').value;
-      if(title && !isNaN(price) && desc){
-        products.push({title,price,desc});
-        renderProducts();
-        document.getElementById('pTitle').value='';
-        document.getElementById('pPrice').value='';
-        document.getElementById('pDesc').value='';
-        document.getElementById('pImage').value='';
-        alert('تم إضافة المنتج');
-      }else alert('املأ جميع الحقول');
-    };
-
-    document.getElementById('year').innerText=new Date().getFullYear();
-  </script>
 </body>
 </html>
